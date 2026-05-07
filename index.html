@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pizza Shop Tycoon</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="level1 dark-text">
+
+  <div id="mainMenu">
+    <div class="menu-box">
+      <h1>🍕 Pizza Shop Tycoon</h1>
+      <p>Build your pizza empire and survive the pizza business!</p>
+
+      <button id="menuStartButton">Start Game</button>
+      <button id="menuTutorialButton">Tutorial</button>
+      <button id="menuCreditsButton">Credits</button>
+
+      <p id="creditsText">Made by Rain</p>
+    </div>
+  </div>
+
+  <div id="tutorialScreen">
+    <div class="tutorial-box">
+      <h1 id="tutorialTitle">🍕 Welcome!</h1>
+      <p id="tutorialText">Let’s learn how to run your pizza shop.</p>
+
+      <div class="tutorial-buttons">
+        <button id="tutorialNextButton">Next</button>
+        <button id="tutorialSkipButton">Skip</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="game">
+    <h1>🍕 Pizza Shop Tycoon</h1>
+
+    <button id="settingsButton">⚙️ Settings</button>
+
+    <div class="panel" id="statsPanel">
+  <h2>📊 Stats</h2>
+
+      <div class="top-bar">
+        <div class="stat-box">💵 Money: $<span id="money">0</span></div>
+        <div class="stat-box">🍕 Pizzas: <span id="pizzas">0</span></div>
+        <div class="stat-box">🔥 Per Pizza: $<span id="perPizza">1</span></div>
+        <div class="stat-box">🍕 Pizza Type: <span id="pizzaType">Cheese</span></div>
+        <div class="stat-box">⭐ Rating: <span id="rating">0</span></div>
+        <div class="stat-box">❤️ Lives: <span id="lives">3</span></div>
+        <div class="stat-box">🌟 Rebirths: <span id="rebirths">0</span></div>
+        <div class="stat-box">🪙 Tokens: <span id="rebirthTokens">0</span></div>
+        <div class="stat-box">📣 Reputation: <span id="reputation">0</span></div>
+        <div class="stat-box">🎖️ Badge: <span id="badgeTitle">Pizza Rookie</span></div>
+        <div class="stat-box">🤖 Auto Buyer: <span id="autoBuyerText">Locked</span></div>
+        <div class="stat-box">🏆 Achievements: <span id="achievementCount">0</span></div>
+      </div>
+
+      <div id="upgradeLevelsBox">
+        <h2>📊 Upgrade Levels</h2>
+        <p id="upgradeLevelsText">No upgrades yet.</p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>🏪 Pizza Shop</h2>
+
+      <p class="shop-click-text">Click the shop icon to make pizza!</p>
+
+      <div class="pizza-area">
+        <div class="big-pizza" id="pizzaVisual">🏪</div>
+      </div>
+
+      <div id="comboBox">
+        ⚡ Combo: <span id="comboText">1</span>x
+      </div>
+
+      <div id="rushBox">
+        🍕 Pizza Rush: <span id="rushText">Off</span>
+      </div>
+
+      <div id="bossEventBox">
+        👑 Boss Event: <span id="bossEventText">None</span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div id="orderBox">
+        <h2>📦 Orders</h2>
+
+        <p id="orderText">No order yet.</p>
+        <p id="orderTimerText">Timer: --</p>
+
+        <button id="newOrderButton">Get New Order</button>
+        <button id="bossOrderButton">Boss Order</button>
+        <button id="vipOrderButton">VIP Order</button>
+        <button id="megaOrderButton">Mega Order</button>
+      </div>
+    </div>
+
+    <div class="panel-menu">
+      <button id="openUpgradesButton" onclick="openGamePanel('upgradesPanel')">🛒 Upgrades</button>
+      <button id="openPermanentButton" onclick="openGamePanel('permanentPanel')">🌟 Permanent</button>
+      <button id="openStatsScreenButton" onclick="openGamePanel('statsScreenPanel')">📈 Stats Screen</button>
+      <button id="openChallengesButton" onclick="openGamePanel('challengesPanel')">🏁 Challenges</button>
+      <button id="openCollectionButton" onclick="openGamePanel('collectionPanel')">🍕 Collection</button>
+      <button id="openAchievementsButton" onclick="openGamePanel('achievementsPanel')">🏆 Achievements</button>
+    </div>
+
+    <div class="panel">
+      <p id="message">Start making pizzas!</p>
+    </div>
+  </div>
+
+  <div id="upgradesPanel" class="gamePanelPopup">
+    <div class="gamePanelBox">
+      <button class="panelCloseButton" onclick="closeGamePanels()">X</button>
+
+      <h2>💵 Your Money: $<span id="upgradeMoney">0</span></h2>
+
+      <h2>🔢 Buy Amount</h2>
+
+      <div class="buy-options">
+        <button onclick="changeBuyAmount(-10)">-10</button>
+        <button onclick="changeBuyAmount(-5)">-5</button>
+        <button onclick="changeBuyAmount(-1)">-1</button>
+
+        <input id="buyAmountInput" type="text" value="1">
+
+        <button onclick="changeBuyAmount(1)">+1</button>
+        <button onclick="changeBuyAmount(5)">+5</button>
+        <button onclick="changeBuyAmount(10)">+10</button>
+      </div>
+
+      <h2>🛒 Upgrades</h2>
+
+      <div class="upgrades">
+        <button id="ovenUpgrade" class="upgrade-card">🔥 Upgrade Oven</button>
+        <button id="hireWorker" class="upgrade-card">👨‍🍳 Hire Worker</button>
+        <button id="shopUpgrade" class="upgrade-card">🏪 Upgrade Shop</button>
+        <button id="deliveryUpgrade" class="upgrade-card">🚗 Delivery Driver</button>
+        <button id="marketingUpgrade" class="upgrade-card">📢 Marketing</button>
+        <button id="managerUpgrade" class="upgrade-card">🧑‍💼 Manager</button>
+        <button id="ingredientsUpgrade" class="upgrade-card">⭐ Better Ingredients</button>
+        <button id="researchUpgrade" class="upgrade-card">🔬 Research Lab</button>
+        <button id="rebirthButton" class="upgrade-card">🌟 Rebirth</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="permanentPanel" class="gamePanelPopup">
+    <div class="gamePanelBox">
+      <button class="panelCloseButton" onclick="closeGamePanels()">X</button>
+
+      <h2>🌟 Permanent Upgrades</h2>
+
+      <div id="permanentUpgradeBox" class="upgrades">
+        <button id="permClickButton" class="upgrade-card">🖱️ Click Boost</button>
+        <button id="permWorkerButton" class="upgrade-card">👨‍🍳 Worker Boost</button>
+        <button id="permOrderButton" class="upgrade-card">📦 Order Boost</button>
+        <button id="permLuckButton" class="upgrade-card">🍀 Luck Boost</button>
+      </div>
+
+      <h2>🔁 Auto Rebirth</h2>
+
+      <div class="upgrades">
+        <button id="autoRebirthButton" class="upgrade-card">🔁 Auto Rebirth: Locked</button>
+      </div>
+
+      <h2>🏛️ Prestige Shop</h2>
+
+      <div class="upgrades">
+        <button id="prestigeRushButton" class="upgrade-card">🍕 Longer Rush</button>
+        <button id="prestigeCheapButton" class="upgrade-card">💸 Cheaper Upgrades</button>
+        <button id="prestigeOrderButton" class="upgrade-card">📦 Better Orders</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="statsScreenPanel" class="gamePanelPopup">
+    <div class="gamePanelBox">
+      <button class="panelCloseButton" onclick="closeGamePanels()">X</button>
+
+      <h2>📈 Stats Screen</h2>
+
+      <div class="top-bar">
+        <div class="stat-box">💰 Total Money Earned: $<span id="totalMoneyEarnedText">0</span></div>
+        <div class="stat-box">🍕 Total Pizzas Made: <span id="totalPizzasMadeText">0</span></div>
+        <div class="stat-box">📦 Orders Completed: <span id="ordersCompletedText">0</span></div>
+        <div class="stat-box">⚡ Highest Combo: <span id="highestComboText">0</span></div>
+        <div class="stat-box">⏱️ Time Played: <span id="timePlayedText">0s</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="challengesPanel" class="gamePanelPopup">
+    <div class="gamePanelBox">
+      <button class="panelCloseButton" onclick="closeGamePanels()">X</button>
+
+      <h2>🏁 Challenge Modes</h2>
+
+      <div class="upgrades">
+        <button id="noWorkerChallenge" class="upgrade-card">🚫 No Worker Challenge</button>
+        <button id="oneLifeChallenge" class="upgrade-card">❤️ One Life Challenge</button>
+        <button id="noOrderChallenge" class="upgrade-card">📦 No Order Challenge</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="collectionPanel" class="gamePanelPopup">
+    <div class="gamePanelBox">
+      <button class="panelCloseButton" onclick="closeGamePanels()">X</button>
+
+      <h2>🍕 Pizza Collection</h2>
+      <p>Click an unlocked pizza skin to use it.</p>
+      <div id="pizzaCollectionBox"></div>
+    </div>
+  </div>
+
+  <div id="achievementsPanel" class="gamePanelPopup">
+    <div class="gamePanelBox">
+      <button class="panelCloseButton" onclick="closeGamePanels()">X</button>
+
+      <h2>🏆 Achievements</h2>
+      <div id="achievementsBox"></div>
+    </div>
+  </div>
+
+  <div id="settingsMenu">
+    <div class="settings-box">
+      <h1>⚙️ Settings</h1>
+
+      <button id="muteButton">Mute: Off</button>
+      <button id="returnMenuButton">Return to Menu</button>
+      <button id="saveButton">Save Game</button>
+      <button id="resetButton">Reset Save</button>
+      <button id="closeSettingsButton">Close</button>
+    </div>
+  </div>
+
+  <div id="adminPanel">
+    <div class="admin-box">
+      <h1>👑 Admin Panel</h1>
+
+      <button id="adminAddMoney">💵 Add Money</button>
+      <button id="adminSetMoneyMax">💰 Set Money to MAX</button>
+      <button id="adminMaxRating">⭐ Max Rating</button>
+      <button id="adminStartRush">🍕 Start Pizza Rush</button>
+      <button id="adminHealLives">❤️ Restore Lives</button>
+      <button id="adminUnlockEverything">🔓 Unlock Everything</button>
+
+      <div class="admin-custom-mini">
+        <select id="adminUpgradeSelect">
+          <option value="money">Money</option>
+          <option value="moneyPerPizza">Pizza Power</option>
+          <option value="workers">Workers</option>
+          <option value="shopLevel">Shop Levels</option>
+          <option value="deliveryDrivers">Delivery Drivers</option>
+          <option value="marketingLevel">Marketing</option>
+          <option value="managers">Managers</option>
+          <option value="ingredientsLevel">Ingredients</option>
+          <option value="researchLevel">Research</option>
+          <option value="reputation">Reputation</option>
+          <option value="rebirthTokens">Rebirth Tokens</option>
+          <option value="rebirths">Rebirths</option>
+          <option value="lives">Lives</option>
+          <option value="rating">Rating</option>
+        </select>
+
+        <input id="adminUpgradeAmount" type="text" placeholder="Amount">
+
+        <button id="adminApplyUpgrade">Apply</button>
+      </div>
+
+      <button id="adminWinGame" style="display: none;">🏆 Force Win</button>
+      <button id="adminClose">Close Admin Panel</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
